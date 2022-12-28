@@ -1,0 +1,17 @@
+
+.fw-light{
+ color: #A52A2A;
+}
+
+.container{
+	padding-top: 8%; 
+	margin-left: 7rem; 
+}
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('https://images.pexels.com/photos/185400/pexels-photo-185400.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

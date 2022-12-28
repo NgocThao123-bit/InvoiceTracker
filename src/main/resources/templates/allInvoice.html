@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Invoice Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link th:href="@{/allInvoice.css}" rel="stylesheet" />
+	<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/invoice}]]";
+    }
+</script>
+</head>
+<body>
+	<div class="masthead">
+		 <div class="container mt-20 px-20">    
+		    <div class="mb-2 d-flex justify-content-between align-items-center">		        
+		        <div class="position-relative">
+		        	<form th:action="@{/invoice}">
+		        		
+					    <input class="form-control w-80" placeholder="Search by name, location, amount, date..." 
+					    	type="text" name="keyword" id="keyword" size="80" 
+					    	th:value="${keyword}"  
+					    />		
+					     <div class="px-2">		            
+		            		<input class="btn btn-outline-success btn-sm" type="submit" value="Search" />					   
+					    	<input class="btn btn-outline-danger btn-sm" type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+		        		</div>							    
+					</form>			            
+		        </div>		    
+		    </div>
+		    <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+			<div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+		    <div class="table-responsive">
+		    <table class="table table-responsive table-borderless">		        
+		      <thead>
+		        <tr  class="bg-light fw-light">		          
+		          <th scope="col" width="5%">ID</th>
+		          <th scope="col" width="20%">Name</th>          
+		          <th scope="col" width="20%">Date</th>
+		          <th scope="col" width="20%">Amount</th>
+		          <th scope="col" width="20%">Location</th>
+		          <th scope="col" class="text-end" width="20%"><span>Action</span></th>
+		        </tr>
+		      </thead>
+		  <tbody>
+		    <tr th:each="invoice : ${invoices}">		   
+		      <td th:text="${invoice.id}"></td>
+		      <td th:text="${invoice.name}"></td>
+		      <td th:text="${invoice.date}"></td>
+		      <td th:text="${invoice.amount}"></td>
+		      <td th:text="${invoice.location}"></td>
+		      <td class="text-end">
+		      	<a th:href="@{/updateInvoice/{id}(id=${invoice.id})}" class="btn btn-warning">Edit</a>
+		        <a th:href="@{/deleteInvoice/{id}(id=${invoice.id})}" class="btn btn-danger">Delete</a>
+		      </td>
+		    </tr>   		 
+		  </tbody>
+		</table>
+		    <div class="lead">
+					<a th:href="@{/invoice/add}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Add Invoice</a>		
+		 			<a th:href="@{/}" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Back to Main Page</a>
+		        </div>
+		  </div>
+		    
+		</div>
+	</div>
+  
+</body>
+
+</html>

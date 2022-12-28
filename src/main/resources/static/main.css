@@ -1,0 +1,12 @@
+.fw-light{
+ color: #A52A2A;
+}
+
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('https://images.pexels.com/photos/1458438/pexels-photo-1458438.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
